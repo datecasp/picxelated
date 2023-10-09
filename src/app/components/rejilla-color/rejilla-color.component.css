@@ -1,3 +1,9 @@
-.rejillaColor{
-    display: inline-block;
+.grid-container{
+    display: grid;
+    gap: 10px;
 }
+.grid-item {
+    background-color: #ccc;
+    padding: 20px;
+    text-align: center;
+  }

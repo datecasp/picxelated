@@ -12,7 +12,8 @@
 }
 
 .selectorColores {
-  width: 84px;
-  height: 630px;
+  width: 146px;
+  height: 430x;
+  padding: 1rem;
   border: 1px solid black;
 }

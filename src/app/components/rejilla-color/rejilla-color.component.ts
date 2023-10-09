@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { PaletaColores } from 'src/app/data/paleta-colores';
 
 @Component({
   selector: 'app-rejilla-color',
@@ -6,11 +7,21 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./rejilla-color.component.css']
 })
 export class RejillaColorComponent {
-  @Input() filasRejilla: number = 0;
   @Input() numeroColumnas: number = 0;
-  filas: any[] = [];
+  @Input() numeroFilas: number = 0;
+  cuadradosColor : any[] = [];
   constructor() {}
   ngOnInit(): void {
-    this.filas = Array(this.filasRejilla).fill('');
+    this.cuadradosColor = Array(this.numeroFilas).fill({color : ""});
+    this.PintaColorCuadrado();
+  }
+
+  PintaColorCuadrado(): void {
+    var colores = PaletaColores;
+    this.cuadradosColor.forEach((cuadrado, i) => {
+      cuadrado = JSON.parse(JSON.stringify(cuadrado)); 
+      cuadrado.color = colores[i]; 
+      this.cuadradosColor[i] = cuadrado; 
+    });
   }
 }

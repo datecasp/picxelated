@@ -10,6 +10,7 @@ import { FilaComponent } from './components/fila/fila.component';
 import { CuadradoColorComponent } from './components/cuadrado-color/cuadrado-color.component';
 import { FilaColorComponent } from './components/fila-color/fila-color.component';
 import { RejillaColorComponent } from './components/rejilla-color/rejilla-color.component';
+import { PintarService } from './services/pintar.service';
 
 @NgModule({
   declarations: [
@@ -24,9 +25,9 @@ import { RejillaColorComponent } from './components/rejilla-color/rejilla-color.
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule    
   ],
-  providers: [],
+  providers: [PintarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

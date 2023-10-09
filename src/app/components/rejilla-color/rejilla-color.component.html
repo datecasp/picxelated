@@ -1,3 +1,3 @@
-<div class="rejillaColor">
-    <app-fila-color *ngFor="let fila of filas" [numeroColumnas]="numeroColumnas"></app-fila-color>
+<div class="grid-container" [style]="{'grid-template-columns': 'repeat(' + numeroColumnas + ', 1fr)'}">
+    <app-cuadrado-color *ngFor="let cuadrado of cuadradosColor; let i = index" [color]="cuadradosColor[i].color"></app-cuadrado-color>
 </div>

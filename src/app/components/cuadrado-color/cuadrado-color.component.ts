@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { PintarService } from 'src/app/services/pintar.service';
 
 @Component({
   selector: 'app-cuadrado-color',
@@ -6,20 +7,14 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./cuadrado-color.component.css']
 })
 export class CuadradoColorComponent {
-  @Input() color: string = 'transparent'; // Color inicial transparente
+  @Input() color: string = ''; // Color inicial transparente
 
-  cambiarColor() {
-    // Cambia el color cuando se hace clic en el cuadrado
-    this.color = this.generarColorAleatorio();
+  constructor(private pintarService: PintarService) { }
+
+  ngOnInit(): void {
   }
 
-  generarColorAleatorio(): string {
-    // Genera un color aleatorio en formato hexadecimal
-    const letras = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-      color += letras[Math.floor(Math.random() * 16)];
-    }
-    return color;
+  public ElegirColor(): void {
+    this.pintarService.colorElegido = this.color;
   }
 }
