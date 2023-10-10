@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class PintarService {
-
+  public btnPulsado: boolean = false;
   public colorElegido : string = "";
 
   constructor() { }
