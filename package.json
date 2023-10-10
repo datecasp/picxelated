@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "ghb": "ng build --base-href='https://datecasp.github.io/picxelated/'",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
