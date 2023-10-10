@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { PaletaColores } from 'src/app/data/paleta-colores';
+import { PintarService } from 'src/app/services/pintar.service';
 
 @Component({
   selector: 'app-rejilla-color',
@@ -10,7 +11,7 @@ export class RejillaColorComponent {
   @Input() numeroColumnas: number = 0;
   @Input() numeroFilas: number = 0;
   cuadradosColor : any[] = [];
-  constructor() {}
+  constructor(private pintarService : PintarService) {}
   ngOnInit(): void {
     this.cuadradosColor = Array(this.numeroFilas).fill({color : ""});
     this.PintaColorCuadrado();
@@ -24,4 +25,5 @@ export class RejillaColorComponent {
       this.cuadradosColor[i] = cuadrado; 
     });
   }
+
 }
