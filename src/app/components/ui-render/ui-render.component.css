@@ -1,10 +1,12 @@
 .uiRender {
-  width: 1080px;
+  width: 80%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 2em;
+  margin: 5% auto;
 }
+
 .juego {
   width: 550px;
   height: 550px;
@@ -13,7 +15,7 @@
 
 .selectorColores {
   width: 146px;
-  height: 430x;
+  height: 520px;
   padding: 1rem;
   border: 1px solid black;
 }
