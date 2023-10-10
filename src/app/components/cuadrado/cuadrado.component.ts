@@ -8,8 +8,8 @@ import { PintarService } from 'src/app/services/pintar.service';
 })
 export class CuadradoComponent {
   @Input() color: string = 'transparent'; // Color inicial transparente
-
-  constructor(private pintarService: PintarService) {}
+btnPulsado : boolean = false;
+  constructor(private pintarService: PintarService) { }
 
   public EmpezarPintar() {
     // Cambia el color cuando se hace clic en el cuadrado

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { PintarService } from 'src/app/services/pintar.service';
 
 @Component({
   selector: 'app-rejilla',
@@ -8,9 +9,22 @@ import { Component, Input } from '@angular/core';
 export class RejillaComponent {
   @Input() filasRejilla: number = 0;
   @Input() numeroColumnas: number = 0;
-  filas: any[] = [];
-  constructor() {}
+  cuadrados: any[] = [];
+  constructor(private pintarService : PintarService) {}
   ngOnInit(): void {
-    this.filas = Array(this.filasRejilla).fill('');
+    this.cuadrados = Array(this.filasRejilla).fill({color : ""});
+    this.pintarService.btnLimpiar$.subscribe(() => {
+      this.LimpiarCanvas();
+    });
+
+  }
+
+  
+  LimpiarCanvas(): void {
+    this.cuadrados.forEach((cuadrado, i) => {
+      cuadrado = JSON.parse(JSON.stringify(cuadrado)); 
+      cuadrado.color = '#FFF'; 
+      this.cuadrados[i] = cuadrado; 
+    });
   }
 }

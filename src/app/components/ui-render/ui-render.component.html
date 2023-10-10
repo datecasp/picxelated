@@ -1,10 +1,11 @@
 <div class="uiRender">
-  <main class="juego">
-    <!-- Contenido principal (60%) -->
-    <app-rejilla [filasRejilla]="25" [numeroColumnas]="25"></app-rejilla>
-  </main>
-  <aside class="selectorColores">
-    <!-- Columna lateral (20%) -->
+  <div>
+    <app-botonera></app-botonera>
+  </div>
+  <div class="juego">
+    <app-rejilla [filasRejilla]="625" [numeroColumnas]="25"></app-rejilla>
+  </div>
+  <div class="selectorColores">
     <app-rejilla-color [numeroFilas]="30" [numeroColumnas]="3"></app-rejilla-color>
-  </aside>
+  </div>
 </div>

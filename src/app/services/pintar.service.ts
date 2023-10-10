@@ -1,11 +1,17 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PintarService {
   public btnPulsado: boolean = false;
-  public colorElegido : string = "";
+  public colorElegido: string = '';
+  public btnLimpiar = new BehaviorSubject<void>(undefined);
 
-  constructor() { }
+  btnLimpiar$ = this.btnLimpiar.asObservable();
+
+  notificarLimpiar() {
+    this.btnLimpiar.next();
+  }
 }

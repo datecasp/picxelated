@@ -1,3 +1,3 @@
-<div class="rejilla">
-    <app-fila *ngFor="let fila of filas" [numeroColumnas]="numeroColumnas"></app-fila>
+<div class="grid-container" [style]="{'grid-template-columns': 'repeat(' + numeroColumnas + ', 1fr)'}">
+    <app-cuadrado *ngFor="let cuadrado of cuadrados"></app-cuadrado>
 </div>
