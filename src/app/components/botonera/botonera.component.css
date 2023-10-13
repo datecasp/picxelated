@@ -1,19 +1,28 @@
-.botonera{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    padding: auto;
-    width: 146px;
-    height: 146px;
-    border: 1px solid black;
+.botonera {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: auto;
+  width: 146px;
+  height: 219px;
+  border: 1px solid black;
 }
-#limpiar{
-    background-color: darkcyan;
-    color: aliceblue;
-    width: 80%;
-    margin: auto;}
-#guardar{
-    background-color: darkcyan;
-    color: aliceblue;
-    width: 80%;
-    margin: auto;}
+#limpiar {
+  background-color: darkcyan;
+  color: aliceblue;
+  width: 80%;
+  margin: auto;
+}
+#guardar {
+  background-color: darkcyan;
+  color: aliceblue;
+  width: 80%;
+  margin: auto;
+}
+
+#guardarArray {
+  background-color: darkcyan;
+  color: aliceblue;
+  width: 80%;
+  margin: auto;
+}

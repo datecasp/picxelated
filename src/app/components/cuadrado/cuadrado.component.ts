@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { PintarService } from 'src/app/services/pintar.service';
 
 @Component({
@@ -7,13 +7,20 @@ import { PintarService } from 'src/app/services/pintar.service';
   styleUrls: ['./cuadrado.component.css']
 })
 export class CuadradoComponent {
-  @Input() color: string = 'transparent'; // Color inicial transparente
-btnPulsado : boolean = false;
-  constructor(private pintarService: PintarService) { }
+  @Input() color: string = ''; // Color inicial transparente
+  @Input() id : number = -1;
+  @Output() enviarId = new EventEmitter<{ id: number, color: string }>();
+  btnPulsado: boolean = false;
+  constructor(private pintarService: PintarService) {}
+  Icuadrado: Cuadrado = { id: this.id, color: this.color };
 
+  ngOnInit():void{
+  }
   public EmpezarPintar() {
     // Cambia el color cuando se hace clic en el cuadrado
     this.color = this.pintarService.colorElegido;
+    const cuadrado = { id: this.Icuadrado.id, color: this.color };
+    this.enviarId.emit(cuadrado);
     this.cambiaPulsador();
   }
 
@@ -22,12 +29,22 @@ btnPulsado : boolean = false;
   }
 
   public Pintar(): void {
-    if (this.pintarService.btnPulsado) {
+    if (!this.pintarService.btnPulsado) {
       this.color = this.pintarService.colorElegido;
+      const cuadrado = { id: this.id, color: this.color };
+      this.enviarId.emit(cuadrado);   
     }
   }
 
   public PararPintar(): void {
     this.pintarService.btnPulsado = false;
   }
+  
 }
+
+interface Cuadrado {
+  id: number;
+  color: string;
+}
+
+// Ejemplo de uso:

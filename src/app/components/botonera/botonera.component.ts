@@ -38,4 +38,8 @@ export class BotoneraComponent {
       console.error('No se encontró el elemento con el ID "rejillaJuego".');
     }
   }
+
+  public GuardarArray() {
+    this.pintarService.notificarGuardarArray();
+  }
 }
