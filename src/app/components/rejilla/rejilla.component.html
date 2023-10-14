@@ -1,3 +1,8 @@
 <div class="grid-container" [style]="{'grid-template-columns': 'repeat(' + numeroColumnas + ', 1fr)'}">
-    <app-cuadrado *ngFor="let cuadrado of cuadrados"></app-cuadrado>
+    <app-cuadrado
+  *ngFor="let cuadrado of arrayCuadrados; let i = index"
+  [id]="i"
+  [color]="cuadrado.color"
+  (enviarId)="ActualizarId($event)"
+></app-cuadrado>
 </div>
