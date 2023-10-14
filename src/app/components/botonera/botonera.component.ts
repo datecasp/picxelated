@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { PintarService } from 'src/app/services/pintar.service';
 import html2canvas from 'html2canvas';
 
@@ -8,6 +8,8 @@ import html2canvas from 'html2canvas';
   styleUrls: ['./botonera.component.css'],
 })
 export class BotoneraComponent {
+  @ViewChild('fileInput') fileInput: ElementRef | undefined;
+
   constructor(private pintarService: PintarService) {}
 
   public LimpiarCanvas(): void {
@@ -41,5 +43,19 @@ export class BotoneraComponent {
 
   public GuardarArray() {
     this.pintarService.notificarGuardarArray();
+  }
+
+  public CargarArchivo(): void {
+    if(this.fileInput!=undefined){
+        this.fileInput.nativeElement.click();
+    }
+  }
+
+  public CargarArray(event: any) {
+    const files = event.target.files;
+    if (files.length > 0) {
+      const file = files[0];
+      this.pintarService.notificarCargarArray(file);
+    }
   }
 }

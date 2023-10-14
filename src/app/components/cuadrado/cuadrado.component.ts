@@ -29,7 +29,7 @@ export class CuadradoComponent {
   }
 
   public Pintar(): void {
-    if (!this.pintarService.btnPulsado) {
+    if (this.pintarService.btnPulsado) {
       this.color = this.pintarService.colorElegido;
       const cuadrado = { id: this.id, color: this.color };
       this.enviarId.emit(cuadrado);   

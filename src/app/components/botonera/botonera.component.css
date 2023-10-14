@@ -4,25 +4,28 @@
   align-items: center;
   padding: auto;
   width: 146px;
-  height: 219px;
+  height: 319px;
   border: 1px solid black;
 }
 #limpiar {
   background-color: darkcyan;
   color: aliceblue;
   width: 80%;
+  height: 3rem;
   margin: auto;
 }
 #guardar {
   background-color: darkcyan;
   color: aliceblue;
-  width: 80%;
+  width: 80%;  
+  height: 3rem;
   margin: auto;
 }
 
-#guardarArray {
+#cargar {
   background-color: darkcyan;
   color: aliceblue;
   width: 80%;
+  height: 3rem;
   margin: auto;
 }

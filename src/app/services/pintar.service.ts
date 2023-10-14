@@ -9,9 +9,11 @@ export class PintarService {
   public colorElegido: string = '';
   public btnLimpiar = new BehaviorSubject<void>(undefined);
   public btnGuardarArray = new BehaviorSubject<void>(undefined);
+  public btnCargarArray = new BehaviorSubject<void>(undefined);
 
   btnLimpiar$ = this.btnLimpiar.asObservable();
   btnGuardarArray$ = this.btnGuardarArray.asObservable();
+  btnCargarArray$ = this.btnCargarArray.asObservable();
 
   notificarLimpiar() {
     this.btnLimpiar.next();
@@ -19,5 +21,9 @@ export class PintarService {
 
   notificarGuardarArray() {
     this.btnGuardarArray.next();
+  }
+
+  notificarCargarArray(jsonCuadrado: any){
+    this.btnCargarArray.next(jsonCuadrado);
   }
 }

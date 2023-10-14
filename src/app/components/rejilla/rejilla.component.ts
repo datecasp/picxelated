@@ -26,14 +26,13 @@ export class RejillaComponent {
     this.pintarService.btnGuardarArray$.subscribe(() => {
       this.GuardarArray();
     });
+
+    this.pintarService.btnCargarArray$.subscribe(() => {
+      this.CargarArrayDesdeArchivo(event);
+    });
+
     this.carga = false;
   }
-
-  /*
-  Poner una prop en cuadrado index que se asigna en Limpiar al cargar (quitar la validacion de LimpiarCanvas)
-  Cuando se pinta un cuadrado, tiene que llamar un output que le pasa a la rejilla el index y el color del cuadrado pintado 
-  y la rejilla debe actualizar su array cuadrados con el nuevo color para el indice que sea
-  */
   LimpiarCanvas(): void {
     RejillaComponent.cuadrados.forEach((cuadrado, i) => {
       cuadrado = JSON.parse(JSON.stringify(cuadrado));
@@ -65,5 +64,32 @@ export class RejillaComponent {
   ActualizarId(datos: { id: number, color: string }): void {
     const cuadrado = { id: datos.id, color: datos.color };
     RejillaComponent.cuadrados[datos.id] = cuadrado;
+  }
+
+  CargarArrayDesdeArchivo(event: any): void {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = (e) => {
+      try {
+        const jsonData = JSON.parse(reader.result as string);
+
+        if (Array.isArray(jsonData)) {
+          // Verifica si el archivo contiene un array de colores
+          if (jsonData.length === RejillaComponent.cuadrados.length) {
+            RejillaComponent.cuadrados = jsonData;
+            this.arrayCuadrados = [...jsonData];
+          } else {
+            console.error('El archivo no tiene la longitud adecuada.');
+          }
+        } else {
+          console.error('El archivo no contiene un array de colores.');
+        }
+      } catch (error) {
+        console.error('Error al analizar el archivo JSON:', error);
+      }
+    };
+
+    reader.readAsText(file);
   }
 }
