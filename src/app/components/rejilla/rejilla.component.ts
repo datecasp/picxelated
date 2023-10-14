@@ -54,7 +54,8 @@ export class RejillaComponent {
       a.href = url;
       a.download = 'miArray.json'; // Nombre del archivo
       document.body.appendChild(a);
-      a.click();
+      //a.click();
+      a.dispatchEvent(new MouseEvent('click'));
       window.URL.revokeObjectURL(url);
 
       this.carga = false;

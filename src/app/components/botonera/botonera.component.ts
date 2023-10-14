@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { PintarService } from 'src/app/services/pintar.service';
 import html2canvas from 'html2canvas';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-botonera',
@@ -9,7 +10,10 @@ import html2canvas from 'html2canvas';
 })
 export class BotoneraComponent {
   @ViewChild('fileInput') fileInput: ElementRef | undefined;
-
+  ttLimpiar: string = 'Borra el dibujo de la rejilla para empezar uno nuevo';
+  ttGuardarImagen: string = "Guarda el dibujo como un archivo de imagen JPG";
+  ttGuardarArchivo : string ="Guarda el dibujo como un archivo JSON para poder seguir dibujando después";
+  ttCargarArchivo: string ="Carga un dibujo desde un archivo JSON para seguir pintando sobre el"
   constructor(private pintarService: PintarService) {}
 
   public LimpiarCanvas(): void {
@@ -46,8 +50,8 @@ export class BotoneraComponent {
   }
 
   public CargarArchivo(): void {
-    if(this.fileInput!=undefined){
-        this.fileInput.nativeElement.click();
+    if (this.fileInput != undefined) {
+      this.fileInput.nativeElement.click();
     }
   }
 

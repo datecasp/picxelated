@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { AppComponent } from './app.component';
 import { CuadradoComponent } from './components/cuadrado/cuadrado.component';
@@ -30,8 +31,9 @@ import { PintarService } from './services/pintar.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule    ,
-    MatButtonModule
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatTooltipModule
   ],
   providers: [PintarService],
   bootstrap: [AppComponent]
