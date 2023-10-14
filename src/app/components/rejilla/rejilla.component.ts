@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { PintarService } from 'src/app/services/pintar.service';
+import { CuadradoComponent } from '../cuadrado/cuadrado.component';
 
 @Component({
   selector: 'app-rejilla',
@@ -9,22 +10,86 @@ import { PintarService } from 'src/app/services/pintar.service';
 export class RejillaComponent {
   @Input() filasRejilla: number = 0;
   @Input() numeroColumnas: number = 0;
-  cuadrados: any[] = [];
-  constructor(private pintarService : PintarService) {}
+  private carga: boolean = true;
+  arrayCuadrados: any[] = [];
+  private static cuadrados: any[] = [];
+  id : number = -2;
+
+  constructor(private pintarService: PintarService) {}
+
   ngOnInit(): void {
-    this.cuadrados = Array(this.filasRejilla).fill({color : ""});
+    RejillaComponent.cuadrados = Array(this.filasRejilla).fill({ color: '', id: 0 });
     this.pintarService.btnLimpiar$.subscribe(() => {
       this.LimpiarCanvas();
     });
 
+    this.pintarService.btnGuardarArray$.subscribe(() => {
+      this.GuardarArray();
+    });
+
+    this.pintarService.btnCargarArray$.subscribe(() => {
+      this.CargarArrayDesdeArchivo(event);
+    });
+
+    this.carga = false;
+  }
+  LimpiarCanvas(): void {
+    RejillaComponent.cuadrados.forEach((cuadrado, i) => {
+      cuadrado = JSON.parse(JSON.stringify(cuadrado));
+      cuadrado.color = '#FFF';
+      cuadrado.id = i;
+      this.id = i;
+      RejillaComponent.cuadrados[i] = cuadrado;
+      this.arrayCuadrados[i] = cuadrado;
+    });
   }
 
-  
-  LimpiarCanvas(): void {
-    this.cuadrados.forEach((cuadrado, i) => {
-      cuadrado = JSON.parse(JSON.stringify(cuadrado)); 
-      cuadrado.color = '#FFF'; 
-      this.cuadrados[i] = cuadrado; 
-    });
+  GuardarArray(): void {
+    if (!this.carga) {
+      const jsonData = JSON.stringify(RejillaComponent.cuadrados);
+      const blob = new Blob([jsonData], { type: 'application/json' });
+
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'miArray.json'; // Nombre del archivo
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+
+      this.carga = false;
+    }
+  }
+
+  ActualizarId(datos: { id: number, color: string }): void {
+    const cuadrado = { id: datos.id, color: datos.color };
+    RejillaComponent.cuadrados[datos.id] = cuadrado;
+  }
+
+  CargarArrayDesdeArchivo(event: any): void {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = (e) => {
+      try {
+        const jsonData = JSON.parse(reader.result as string);
+
+        if (Array.isArray(jsonData)) {
+          // Verifica si el archivo contiene un array de colores
+          if (jsonData.length === RejillaComponent.cuadrados.length) {
+            RejillaComponent.cuadrados = jsonData;
+            this.arrayCuadrados = [...jsonData];
+          } else {
+            console.error('El archivo no tiene la longitud adecuada.');
+          }
+        } else {
+          console.error('El archivo no contiene un array de colores.');
+        }
+      } catch (error) {
+        console.error('Error al analizar el archivo JSON:', error);
+      }
+    };
+
+    reader.readAsText(file);
   }
 }
