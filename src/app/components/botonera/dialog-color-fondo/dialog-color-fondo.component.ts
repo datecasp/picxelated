@@ -14,16 +14,22 @@ interface colorFondo {
 export class DialogColorFondoComponent {
   constructor(
     private pintarService: PintarService,
-    public dialogRef: MatDialogRef<DialogColorFondoComponent>,
+    public dialogRef: MatDialogRef<DialogColorFondoComponent>
   ) {}
 
   SeleccionarColor(): void {
-   this.pintarService.pintarFondo = true;
-   this.dialogRef.close();
+    this.pintarService.pintarFondo = true;
+    if (this.pintarService.fondoElegido) {
+      this.pintarService.notificarLimpiar();
+    }
+    this.pintarService.pintarFondo = false;
+    this.pintarService.fondoElegido = false;
+    this.dialogRef.close();
   }
 
   onNoClick(): void {
     this.pintarService.pintarFondo = false;
+    this.pintarService.fondoElegido = false;
     this.dialogRef.close();
   }
 }

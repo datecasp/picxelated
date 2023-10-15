@@ -16,5 +16,6 @@ export class CuadradoColorComponent {
 
   public ElegirColor(): void {
     this.pintarService.colorElegido = this.color;
+    this.pintarService.fondoElegido = true;
   }
 }
