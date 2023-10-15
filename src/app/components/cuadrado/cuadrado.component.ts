@@ -1,6 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { PintarService } from 'src/app/services/pintar.service';
 
+
+interface Cuadrado {
+  id: number;
+  color: string;
+}
 @Component({
   selector: 'app-cuadrado',
   templateUrl: './cuadrado.component.html',
@@ -42,9 +47,3 @@ export class CuadradoComponent {
   
 }
 
-interface Cuadrado {
-  id: number;
-  color: string;
-}
-
-// Ejemplo de uso:
