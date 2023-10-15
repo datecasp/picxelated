@@ -37,10 +37,13 @@ export class RejillaComponent {
     this.carga = false;
   }
   LimpiarCanvas(): void {
-    // la variable del servicio pintarService.pintarFondo indica si
-    // es un borrado de canvas o pintarlo de un color determinado
+    /* La variable del servicio pintarService.pintarFondo indica si
+     es un borrado de canvas o pintarlo de un color determinado
+     La variable pintarService.fondoElegido indica si hay elegido 
+     un fondo en el selector
+     */
     var color =
-      this.pintarService.pintarFondo
+      this.pintarService.fondoElegido && this.pintarService.pintarFondo
         ? this.pintarService.colorElegido
         :  '#FFF';
     RejillaComponent.cuadrados.forEach((cuadrado, i) => {

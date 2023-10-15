@@ -30,6 +30,7 @@ export class BotoneraComponent {
   constructor(private pintarService: PintarService, public dialog: MatDialog) {}
 
   public AbrirSelector(): void {
+    this.pintarService.fondoElegido = false;
     const dialogRef = this.dialog.open(DialogColorFondoComponent, {
       width: '550px',
     });
@@ -37,7 +38,7 @@ export class BotoneraComponent {
     dialogRef.afterClosed().subscribe((result) => {
       // Este Limpiar pinta el fondo de la rejilla del color elegido
       // El Dialog ha seteado a true la variable pintarService.pintarFondo
-      this.pintarService.notificarLimpiar();
+     
     });
   }
   public LimpiarCanvas(): void {
