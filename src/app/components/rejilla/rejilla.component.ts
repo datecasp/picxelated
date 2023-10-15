@@ -13,12 +13,15 @@ export class RejillaComponent {
   private carga: boolean = true;
   arrayCuadrados: any[] = [];
   private static cuadrados: any[] = [];
-  id : number = -2;
+  id: number = -2;
 
   constructor(private pintarService: PintarService) {}
 
   ngOnInit(): void {
-    RejillaComponent.cuadrados = Array(this.filasRejilla).fill({ color: '', id: 0 });
+    RejillaComponent.cuadrados = Array(this.filasRejilla).fill({
+      color: '',
+      id: 0,
+    });
     this.pintarService.btnLimpiar$.subscribe(() => {
       this.LimpiarCanvas();
     });
@@ -34,14 +37,21 @@ export class RejillaComponent {
     this.carga = false;
   }
   LimpiarCanvas(): void {
+    // la variable del servicio pintarService.pintarFondo indica si
+    // es un borrado de canvas o pintarlo de un color determinado
+    var color =
+      this.pintarService.pintarFondo
+        ? this.pintarService.colorElegido
+        :  '#FFF';
     RejillaComponent.cuadrados.forEach((cuadrado, i) => {
       cuadrado = JSON.parse(JSON.stringify(cuadrado));
-      cuadrado.color = '#FFF';
+      cuadrado.color = color;
       cuadrado.id = i;
       this.id = i;
       RejillaComponent.cuadrados[i] = cuadrado;
       this.arrayCuadrados[i] = cuadrado;
     });
+    this.pintarService.pintarFondo = false;
   }
 
   GuardarArray(): void {
@@ -62,7 +72,7 @@ export class RejillaComponent {
     }
   }
 
-  ActualizarId(datos: { id: number, color: string }): void {
+  ActualizarId(datos: { id: number; color: string }): void {
     const cuadrado = { id: datos.id, color: datos.color };
     RejillaComponent.cuadrados[datos.id] = cuadrado;
   }

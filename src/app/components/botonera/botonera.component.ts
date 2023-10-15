@@ -1,7 +1,16 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, ViewChild } from '@angular/core';
 import { PintarService } from 'src/app/services/pintar.service';
 import html2canvas from 'html2canvas';
 import { MatTooltipModule } from '@angular/material/tooltip';
+
+import {
+  MAT_DIALOG_DATA,
+  MatDialog,
+  MatDialogModule,
+  MatDialogRef,
+} from '@angular/material/dialog';
+import { DialogColorFondoComponent } from './dialog-color-fondo/dialog-color-fondo.component';
+
 
 @Component({
   selector: 'app-botonera',
@@ -10,12 +19,27 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 })
 export class BotoneraComponent {
   @ViewChild('fileInput') fileInput: ElementRef | undefined;
+  ttColorFondo: string = 'Cambia el color del fondo de la rejilla';
   ttLimpiar: string = 'Borra el dibujo de la rejilla para empezar uno nuevo';
-  ttGuardarImagen: string = "Guarda el dibujo como un archivo de imagen JPG";
-  ttGuardarArchivo : string ="Guarda el dibujo como un archivo JSON para poder seguir dibujando después";
-  ttCargarArchivo: string ="Carga un dibujo desde un archivo JSON para seguir pintando sobre el"
-  constructor(private pintarService: PintarService) {}
+  ttGuardarImagen: string = 'Guarda el dibujo como un archivo de imagen JPG';
+  ttGuardarArchivo: string =
+    'Guarda el dibujo como un archivo JSON para poder seguir dibujando después';
+  ttCargarArchivo: string =
+    'Carga un dibujo desde un archivo JSON para seguir pintando sobre el';
+  color: string = '#FFF';
+  constructor(private pintarService: PintarService, public dialog: MatDialog) {}
 
+  public AbrirSelector(): void {
+    const dialogRef = this.dialog.open(DialogColorFondoComponent, {
+      width: '550px',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // Este Limpiar pinta el fondo de la rejilla del color elegido
+      // El Dialog ha seteado a true la variable pintarService.pintarFondo
+      this.pintarService.notificarLimpiar();
+    });
+  }
   public LimpiarCanvas(): void {
     this.pintarService.notificarLimpiar();
   }
@@ -63,3 +87,4 @@ export class BotoneraComponent {
     }
   }
 }
+

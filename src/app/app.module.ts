@@ -4,6 +4,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 import { AppComponent } from './app.component';
 import { CuadradoComponent } from './components/cuadrado/cuadrado.component';
@@ -15,6 +17,7 @@ import { FilaColorComponent } from './components/fila-color/fila-color.component
 import { RejillaColorComponent } from './components/rejilla-color/rejilla-color.component';
 import { BotoneraComponent } from './components/botonera/botonera.component';
 import { PintarService } from './services/pintar.service';
+import { DialogColorFondoComponent } from './components/botonera/dialog-color-fondo/dialog-color-fondo.component';
 
 @NgModule({
   declarations: [
@@ -26,14 +29,17 @@ import { PintarService } from './services/pintar.service';
     CuadradoColorComponent,
     FilaColorComponent,
     RejillaColorComponent,
-    BotoneraComponent
+    BotoneraComponent,
+    DialogColorFondoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDialogModule,
+    MatFormFieldModule
   ],
   providers: [PintarService],
   bootstrap: [AppComponent]
