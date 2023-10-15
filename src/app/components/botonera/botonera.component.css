@@ -7,6 +7,13 @@
   height: 319px;
   border: 1px solid black;
 }
+#colorFondo {
+  background-color: darkcyan;
+  color: aliceblue;
+  width: 80%;
+  height: 3rem;
+  margin: auto;
+}
 #limpiar {
   background-color: darkcyan;
   color: aliceblue;

@@ -1,7 +1,8 @@
 <div class="botonera">
-    <button mat-raised-button id="limpiar" (click)="LimpiarCanvas()">Limpiar</button>
-    <button mat-raised-button id="guardar" (click)="GuardarCanvas()">Guardar imagen</button>
-    <button mat-raised-button id="guardar" (click)="GuardarArray()">Guardar archivo</button>
+    <button mat-raised-button id="colorFondo" [matTooltip]=ttColorFondo (click)="AbrirSelector()">Color fondo</button>
+    <button mat-raised-button id="limpiar" [matTooltip]=ttLimpiar (click)="LimpiarCanvas()">Limpiar</button>
+    <button mat-raised-button id="guardar" [matTooltip]=ttGuardarImagen (click)="GuardarCanvas()">Guardar imagen</button>
+    <button mat-raised-button id="guardar" [matTooltip]=ttGuardarArchivo (click)="GuardarArray()">Guardar archivo</button>
     <input mat-raised-button type="file" #fileInput style="display:none;" (change)="CargarArray($event)" accept=".json"/>
-    <button mat-raised-button id="cargar" (click)="CargarArchivo()">Cargar archivo</button>
+    <button mat-raised-button id="cargar" [matTooltip]=ttCargarArchivo (click)="CargarArchivo()">Cargar archivo</button>
 </div>
