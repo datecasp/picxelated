@@ -1,27 +1,15 @@
 # Picxelated
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.5.
+Picxelated es una aplicación de Pixel Art desarrollada con [Angular CLI](https://github.com/angular/angular-cli) version 15.0.5.
 
-## Development server
+# El juego
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Picxelated es tan sencilla como es posible de usar a la vez que presenta una serie de funcionalidades de lo más interesantes.
+El interfaz de usuario es limpio y sencillo. Presenta una columna izquierda con una serie de bonotes de acción, un área central con la rejilla de dibujo y una columna derecha con una rejilla de colores predefinidos para usar en el dibujo.
+Dentro de la botonera de funcionalidad se puede:
+* Cambiar el fondo de la rejilla (abre un DIalog para elkegir el color de un set predeterminado)
+* Limpiar la rejilla para volver a empezar a dibujar
+* Guardar tu dibujo como JPG (se renderiza la rejilla con la libreria html2canvas) y descargarlo
+* Guardar tu dibujo com archivo JSON y descargarlo
+* Cargar un archivo de dibujo en formato JSON para seguir dibujando sobre el.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
