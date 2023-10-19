@@ -1,8 +1,8 @@
-import { Component, ElementRef, Inject, ViewChild } from '@angular/core';
+import { Component, ElementRef, Renderer2 , ViewChild } from '@angular/core';
 import { PintarService } from 'src/app/services/pintar.service';
 import html2canvas from 'html2canvas';
 import { MatTooltipModule } from '@angular/material/tooltip';
-
+import {MatCardModule} from '@angular/material/card';
 import {
   MAT_DIALOG_DATA,
   MatDialog,
@@ -20,6 +20,7 @@ import { DialogColorFondoComponent } from './dialog-color-fondo/dialog-color-fon
 export class BotoneraComponent {
   @ViewChild('fileInput') fileInput: ElementRef | undefined;
   ttColorFondo: string = 'Cambia el color del fondo de la rejilla';
+  ttDibujoFondo: string = 'Cambia el color del fondo de la rejilla integrando el dibujo existente';
   ttLimpiar: string = 'Borra el dibujo de la rejilla para empezar uno nuevo';
   ttGuardarImagen: string = 'Guarda el dibujo como un archivo de imagen JPG';
   ttGuardarArchivo: string =
@@ -27,10 +28,13 @@ export class BotoneraComponent {
   ttCargarArchivo: string =
     'Carga un dibujo desde un archivo JSON para seguir pintando sobre el';
   color: string = '#FFF';
-  constructor(private pintarService: PintarService, public dialog: MatDialog) {}
+  mexclarDibujo :boolean = false;
 
-  public AbrirSelector(): void {
+  constructor(private pintarService: PintarService, public dialog: MatDialog, private renderer: Renderer2, private elementRef: ElementRef) {}
+
+  public AbrirSelector(mezclarDibujo : boolean): void {
     this.pintarService.fondoElegido = false;
+    this.pintarService.mezclarDibujo = mezclarDibujo;
     const dialogRef = this.dialog.open(DialogColorFondoComponent, {
       width: '550px',
     });
