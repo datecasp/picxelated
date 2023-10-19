@@ -6,6 +6,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatCardModule} from '@angular/material/card';
 
 import { AppComponent } from './app.component';
 import { CuadradoComponent } from './components/cuadrado/cuadrado.component';
@@ -35,7 +37,9 @@ import { DialogColorFondoComponent } from './components/botonera/dialog-color-fo
     MatButtonModule,
     MatTooltipModule,
     MatDialogModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatSlideToggleModule,
+    MatCardModule
   ],
   providers: [PintarService],
   bootstrap: [AppComponent]

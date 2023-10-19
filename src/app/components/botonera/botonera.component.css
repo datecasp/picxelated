@@ -4,8 +4,15 @@
   align-items: center;
   padding: auto;
   width: 146px;
-  height: 319px;
+  height: 459px;
   border: 1px solid black;
+}
+#dibujoFondo {
+  background-color: darkcyan;
+  color: aliceblue;
+  width: 80%;
+  height: 3rem;
+  margin: auto;
 }
 #colorFondo {
   background-color: darkcyan;
@@ -21,7 +28,8 @@
   height: 3rem;
   margin: auto;
 }
-#guardar {
+
+#guardarImagen {
   background-color: darkcyan;
   color: aliceblue;
   width: 80%;  
@@ -29,10 +37,32 @@
   margin: auto;
 }
 
+#guardarArchivo {
+  background-color: lightgray;
+  color: aliceblue;
+  width: 80%;  
+  height: 3rem;
+  margin: auto;
+}
+
 #cargar {
-  background-color: darkcyan;
+  background-color: lightgray;
   color: aliceblue;
   width: 80%;
   height: 3rem;
   margin: auto;
+}
+.h2 {
+  margin: 10px;
+}
+
+.section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.margin {
+  margin: 10px;
 }
