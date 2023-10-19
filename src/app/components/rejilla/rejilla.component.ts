@@ -51,7 +51,7 @@ intentegrarDinujoEnFondo : boolean = false;
         :  '#FFF';
     RejillaComponent.cuadrados.forEach((cuadrado, i) => {
       cuadrado = JSON.parse(JSON.stringify(cuadrado));
-      if(this.pintarService.mezclarDibujo){
+      if(this.pintarService.mezclarDibujo && this.pintarService.fondoElegido){
           if((cuadrado.color == "#FFF") || (cuadrado.color == "")){
               cuadrado.color = color;
           }
