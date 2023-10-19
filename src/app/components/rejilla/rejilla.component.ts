@@ -14,6 +14,7 @@ export class RejillaComponent {
   arrayCuadrados: any[] = [];
   private static cuadrados: any[] = [];
   id: number = -2;
+intentegrarDinujoEnFondo : boolean = false;
 
   constructor(private pintarService: PintarService) {}
 
@@ -41,6 +42,8 @@ export class RejillaComponent {
      es un borrado de canvas o pintarlo de un color determinado
      La variable pintarService.fondoElegido indica si hay elegido 
      un fondo en el selector
+     MezclaDibujo indica si se va a pintar el fondo sobre el dibujo
+     preexistente o se va a respetar
      */
     var color =
       this.pintarService.fondoElegido && this.pintarService.pintarFondo
@@ -48,7 +51,14 @@ export class RejillaComponent {
         :  '#FFF';
     RejillaComponent.cuadrados.forEach((cuadrado, i) => {
       cuadrado = JSON.parse(JSON.stringify(cuadrado));
-      cuadrado.color = color;
+      if(this.pintarService.mezclarDibujo){
+          if((cuadrado.color == "#FFF") || (cuadrado.color == "")){
+              cuadrado.color = color;
+          }
+      }
+      else{
+        cuadrado.color = color;
+      }
       cuadrado.id = i;
       this.id = i;
       RejillaComponent.cuadrados[i] = cuadrado;
