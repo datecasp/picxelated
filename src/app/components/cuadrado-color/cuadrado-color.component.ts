@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, ElementRef, Input, Renderer2 } from '@angular/core';
 import { PintarService } from 'src/app/services/pintar.service';
 
 @Component({
@@ -9,12 +9,13 @@ import { PintarService } from 'src/app/services/pintar.service';
 export class CuadradoColorComponent {
   @Input() color: string = ''; // Color inicial transparente
 
-  constructor(private pintarService: PintarService) { }
+  constructor(private pintarService: PintarService, private renderer: Renderer2, private elementRef: ElementRef) { }
 
   ngOnInit(): void {
   }
 
   public ElegirColor(): void {
+
     this.pintarService.colorElegido = this.color;
     this.pintarService.fondoElegido = true;
   }

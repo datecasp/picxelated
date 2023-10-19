@@ -9,6 +9,7 @@ export class PintarService {
   public colorElegido: string = '';
   public pintarFondo: boolean = false;
   public fondoElegido: boolean = false;
+  public mezclarDibujo : boolean = false;
   public btnLimpiar = new BehaviorSubject<void>(undefined);
   public btnGuardarArray = new BehaviorSubject<void>(undefined);
   public btnCargarArray = new BehaviorSubject<void>(undefined);
