@@ -32,7 +32,7 @@
           },
           "configurations": {
             "production": {
-              "baseHref": "/picxelated",
+              "baseHref": "picxelated",
               "budgets": [
                 {
                   "type": "initial",
