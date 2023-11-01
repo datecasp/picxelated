@@ -32,7 +32,7 @@
           },
           "configurations": {
             "production": {
-              "baseHref": "/picxelated",
+              "baseHref": "https://datecasp.github.io/picxelated/",
               "budgets": [
                 {
                   "type": "initial",
