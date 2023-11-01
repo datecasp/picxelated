@@ -14,7 +14,7 @@ export class RejillaComponent {
   arrayCuadrados: any[] = [];
   private static cuadrados: any[] = [];
   id: number = -2;
-intentegrarDinujoEnFondo : boolean = false;
+intentegrarDibujoEnFondo : boolean = false;
 
   constructor(private pintarService: PintarService) {}
 

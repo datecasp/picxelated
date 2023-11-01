@@ -24,7 +24,7 @@ export class CuadradoComponent {
   public EmpezarPintar() {
     // Cambia el color cuando se hace clic en el cuadrado
     this.color = this.pintarService.colorElegido;
-    const cuadrado = { id: this.Icuadrado.id, color: this.color };
+    const cuadrado = { id: this.id, color: this.color };
     this.enviarId.emit(cuadrado);
     this.cambiaPulsador();
   }
